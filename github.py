@@ -9,7 +9,9 @@ def get_prs(repo:str, state:str="")->dict[str,any]:
 	params = {
 		"state": state,
 	}
-	prs = requests.get(url, auth=config.basic, params=params).json()
+	prs = requests.get(url, auth=config.basic, params=params, headers={
+		"content-type": "application/json; utf-8"
+	}).json()
 
 	return prs
 
